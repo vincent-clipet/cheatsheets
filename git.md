@@ -4,7 +4,7 @@
 
 <br><br>
 
-## **compare / diff**
+## **compare / diff / log**
 <hr><br>
 
 Display diff between staging area and working directory
@@ -18,7 +18,7 @@ git log branch_B..branch_A
 git diff branch_B...branch_A
 ```
 
-Show commit logs with path that moved
+Show commit logs with paths that moved
 ```bash
 git log --stat -M
 ```
@@ -29,7 +29,7 @@ git log --stat -M
 
 
 
-## **remote**
+## **Interact with remote**
 <hr><br>
 
 
@@ -49,11 +49,16 @@ Delete a remote branch
 git push origin --delete [branch]
 ```
 
+Print detailed info of the remote & its content (remotes branches for example)
+```bash
+git remote show origin
+```
+
 <br><br>
 
 
 
-## **upstream**
+## **Interact with upstream**
 <hr><br>
 
 List all remotes & upstreams
@@ -76,6 +81,54 @@ git merge upstream/[branch]
 
 
 
+## **revert / reset / rm**
+<hr><br>
+
+
+Commit the opposite of commit \<ref\>
+```bash
+git revert <ref>
+```
+
+Unstage all staged files
+```bash
+git reset <ref>
+```
+
+Unstage \<file\>
+```bash
+git reset HEAD <file>
+```
+
+Voids the last **N** commits
+```bash
+git reset --hard [HEAD~N]
+```
+
+Rollback and stage everything
+```bash
+git reset --soft [HEAD~N]
+```
+
+Rollback and don't stage
+```bash
+git reset --mixed [HEAD~N]
+```
+
+Interactive rollback. Pick an action for each rollbacked commit 1-by-1
+```bash
+git reset --keep
+```
+
+Dry-run of `rm`
+```bash
+rm -n
+```
+
+<br><br>
+
+
+
 ## **stash**
 <hr><br>
 
@@ -91,17 +144,22 @@ git stash list
 
 Show the content of a stash entry
 ```bash
-git stash show [stash] 
+git stash show [<stash@entry>]
 ```
 
 Apply a stash entry, and remove it from stash
 ```bash
-git stash pop [stash] 
+git stash pop [<stash@entry>]
 ```
 
 Apply a stash entry, but keep it in the stash
 ```bash
-git stash apply [stash] 
+git stash apply [<stash@entry>]
+```
+
+Apply a stash entry on top of its parent commit, on a new branch
+```bash
+git stash branch <new_branch> [<stash@entry>]
 ```
 
 Delete a stash entry
@@ -129,4 +187,9 @@ git cherry-pick [commit_ID]
 Quickly find which commit introduced a bug
 ```bash
 git bisect (command)
+```
+
+Find which commit deleted \<file\>
+```bash
+git rev-list HEAD -n 1 -- <file>
 ```
