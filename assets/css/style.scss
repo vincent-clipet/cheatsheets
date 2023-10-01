@@ -65,3 +65,12 @@ code {
 ul {
 	padding: 0 0 0 16px;
 }
+
+nav {
+    width: 230px;
+    position: fixed;
+    top: 220px;
+    left: 50%;
+    margin-left: -580px;
+    text-align: right;
+}
