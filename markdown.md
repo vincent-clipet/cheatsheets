@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Cheat Sheet Markdown
 
 <br>

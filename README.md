@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Cheatsheets
 
 Various cheat-sheets for commonly-used tools.

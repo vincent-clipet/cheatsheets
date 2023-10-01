@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Visual Studio Cheat Sheet
 
 <hr>
