@@ -1,5 +1,7 @@
 plugins:
   - jekyll-relative-links
+  - jekyll-remote-theme
+remote_theme: pages-themes/midnight@v0.2.0
 relative_links:
   enabled: true
   collections: true
@@ -7,3 +9,4 @@ include:
   - md/git.md
   - md/markdown.md
   - md/visual-studio.md
+title: [Cheatsheets]
