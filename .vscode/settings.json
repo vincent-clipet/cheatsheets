@@ -1,3 +1,10 @@
 {
-	"scss.format.enable": false
+	"scss.format.enable": false,
+	"files.exclude": {
+		"_site": true,
+		".jekyll-cache": true,
+		".vscode": true,
+		"Gemfile*": true,
+		"jekyll_preview.sh": true
+	}
 }
