@@ -1,15 +1,21 @@
 # Visual Studio Cheat Sheet
 
-### Full reference : https://code.visualstudio.com/docs/editor/codebasics
-### Set custom keybinds : https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference
+<hr>
+
+### Full reference : [](https://code.visualstudio.com/docs/editor/codebasics)
+### Set custom keybinds : [](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
+
+<hr>
 
 
 
 
-<br><br>
+
+<br>
 
 ## **Cursor**
-<hr><br>
+
+<hr>
 
 Add a cursor on mouse
 ```bash
@@ -28,13 +34,13 @@ Ctrl + D
 
 
 
-<br><br>
+
+
+<br>
 
 ## **Selection**
-<hr><br>
 
-
-
+<hr>
 
 Select all occurences of the current selection
 ```bash
@@ -53,14 +59,15 @@ Alt + Shift + Click-and-drag
 
 
 
-<br><br>
+
+
+<br>
 
 ## **Search**
-<hr><br>
+
+<hr>
 
 Search in all files in Project
 ```bash
 Ctrl + Shift + F
 ```
-
-

@@ -7,5 +7,5 @@ Source Markdown files are available [here](https://vincent-clipet.github.io/chea
 
 - ### [Git](./git)
 - ### [Markdown tags](./markdown) `(need cleaning)`
-- ### [Visual Studio](./visual-studio) `(outdated)`
+- ### [Visual Studio](./visual-studio)
 - ### [Ruby on Rails](./ruby-on-rails) `(WIP)`
