@@ -1,15 +1,20 @@
-# Git Cheat Sheet
 
+# Git Cheatsheet
 
+<br>
 
-<br><br>
+### **compare / diff / log**
 
-## **compare / diff / log**
-<hr><br>
+<hr>
 
 Display diff between staging area and working directory
 ```bash
 git diff --staged
+```
+
+Show commit logs with paths that moved
+```bash
+git log --stat -M
 ```
 
 RIGHT OUTER JOIN **branch_A** ON **branch_B**
@@ -18,19 +23,15 @@ git log branch_B..branch_A
 git diff branch_B...branch_A
 ```
 
-Show commit logs with paths that moved
-```bash
-git log --stat -M
-```
 
 
 
-<br><br>
 
+<br>
 
+### **Interact with remote**
 
-## **Interact with remote**
-<hr><br>
+<hr>
 
 
 Add a git URL as a remote named *[alias]*
@@ -42,7 +43,6 @@ Publish a local branch onto the remote, and set it as upstream
 ```bash
 git push --set-upstream origin [branch]
 ```
-<br>
 
 Delete a remote branch
 ```bash
@@ -54,12 +54,15 @@ Print detailed info of the remote & its content (remotes branches for example)
 git remote show origin
 ```
 
-<br><br>
 
 
 
-## **Interact with upstream**
-<hr><br>
+
+<br>
+
+### **Interact with upstream**
+
+<hr>
 
 List all remotes & upstreams
 ```bash
@@ -77,12 +80,15 @@ git fetch upstream
 git merge upstream/[branch]
 ```
 
-<br><br>
 
 
 
-## **revert / reset / rm**
-<hr><br>
+
+<br>
+
+### **revert / reset / rm**
+
+<hr>
 
 
 Commit the opposite of commit \<ref\>
@@ -90,7 +96,11 @@ Commit the opposite of commit \<ref\>
 git revert <ref>
 ```
 
-Unstage all staged files
+Unstage all files staged since last commit
+```bash
+git reset HEAD^
+```
+Rollback to commit \<ref\>, but keep everything modified as unstaged files
 ```bash
 git reset <ref>
 ```
@@ -125,12 +135,46 @@ Dry-run of `rm`
 rm -n
 ```
 
-<br><br>
 
 
 
-## **stash**
-<hr><br>
+<br>
+
+### **Purge files completely (secrets, passwords, ...)**
+
+<hr>
+
+Install `git-filter-repo`
+```bash
+apt-get install git-filter-repo
+```
+
+Move the current project, and clone a fresh copy
+*(if not a clean clone, add `--force` to the `git-filter-repo` command instead)*
+```bash
+mv -r ./<project> ./<project_backup
+git clone <remote_url> 
+```
+
+The critical part :
+```bash
+git-filter-repo --path <file_to_remove> --invert-paths --force
+```
+
+Re-set the remote_url, and force-push the new repo
+```bash
+git remote add origin <remote_url>
+git push --set-upstream origin main -f
+```
+
+
+
+
+<br>
+
+### **stash**
+
+<hr>
 
 Save current non-staged edits into the stash
 ```bash
@@ -144,27 +188,27 @@ git stash list
 
 Show the content of a stash entry
 ```bash
-git stash show [<stash@entry>]
+git stash show [<id>]
 ```
 
 Apply a stash entry, and remove it from stash
 ```bash
-git stash pop [<stash@entry>]
+git stash pop [<id>]
 ```
 
 Apply a stash entry, but keep it in the stash
 ```bash
-git stash apply [<stash@entry>]
+git stash apply [<id>]
 ```
 
 Apply a stash entry on top of its parent commit, on a new branch
 ```bash
-git stash branch <new_branch> [<stash@entry>]
+git stash branch <new_branch> [<id>]
 ```
 
 Delete a stash entry
 ```bash
-git stash drop
+git stash drop [<id>]
 ```
 
 Delete the entire stash
@@ -172,12 +216,20 @@ Delete the entire stash
 git stash clear
 ```
 
-<br><br>
 
 
 
-## **Misc**
-<hr><br>
+
+<br>
+
+### **Misc**
+
+<hr>
+
+Move <file> in the working directory and in the index
+```bash
+git mv <file>
+```
 
 Copy a commit onto the current branch
 ```bash
@@ -189,7 +241,20 @@ Quickly find which commit introduced a bug
 git bisect (command)
 ```
 
-Find which commit deleted \<file\>
+Find on which commit \<file\> was deleted
 ```bash
 git rev-list HEAD -n 1 -- <file>
+```
+
+Merge 2 repos together
+```bash
+# We are in repo_A
+git remote add -f <B> <B_url>
+git merge <B>/master
+
+mkdir <B>
+
+dir -exclude B | %{git mv $_.Name <B>}
+# or
+git mv <file> <B>
 ```
