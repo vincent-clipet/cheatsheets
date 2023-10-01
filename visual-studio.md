@@ -2,8 +2,8 @@
 
 <hr>
 
-### Full reference : [](https://code.visualstudio.com/docs/editor/codebasics)
-### Set custom keybinds : [](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
+##### Full reference : [https://code.visualstudio.com/docs/editor/codebasics](https://code.visualstudio.com/docs/editor/codebasics)
+##### Set custom keybinds : [https://code.visualstudio.com/docs/editor/codebasics](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
 <hr>
 
