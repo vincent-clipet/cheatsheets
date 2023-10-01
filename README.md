@@ -1,2 +1,11 @@
-# cheat-sheets
-Various cheat-sheets
+# Cheatsheets
+
+Various cheat-sheets for commonly-used tools.
+Source Markdown files are available [here](https://vincent-clipet.github.io/cheatsheets/).
+
+---
+
+- ### [Git](./git)
+- ### [Markdown tags](./markdown) `(need cleaning)`
+- ### [Visual Studio](./visual-studio) `(outdated)`
+- ### [Ruby on Rails](./ruby-on-rails) `(WIP)`
