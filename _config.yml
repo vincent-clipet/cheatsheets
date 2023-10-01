@@ -10,3 +10,4 @@ include:
   - md/markdown.md
   - md/visual-studio.md
 title: [Cheatsheets]
+show_download: [false]
