@@ -232,7 +232,7 @@ end
 
 <hr>
 
-> Official documentation : [https://guides.rubyonrails.org/active_record_validations.html](hhttps://guides.rubyonrails.org/active_record_validations.html)
+> Official documentation : [https://guides.rubyonrails.org/action_controller_overview.html](hhttps://guides.rubyonrails.org/action_controller_overview.html)
 
 Relationships :
 ```ruby
@@ -247,7 +247,7 @@ has_many :books, dependent: :destroy
 Validations :
 ```ruby
 validates :first_name, presence: true
-validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Must be a valid email address'}
+validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email'}
 validates :price, numericality: { greater_than_equal_to: 0.01 }
 validates :title, uniqueness: true
 validates :title, length: { minimum: 3, maximum: 100 }
@@ -271,4 +271,75 @@ Hooks / Callbacks :
 ```ruby
 before_destroy :ensure_not_reference_by_any_invoices 
 before_save :downcase_email 
+```
+
+
+
+
+
+<br>
+
+### **Controllers**
+
+<hr>
+
+> Official documentation : [https://guides.rubyonrails.org/action_controller_overview.html](https://guides.rubyonrails.org/action_controller_overview.html)
+
+```ruby
+def index
+  if session[:q].present?
+    params[:page] = 1
+    @posts = Post.where "title like ?", "%" + session[:q] + "%"
+  else
+    @posts = Post.all
+  end
+  @posts = @posts.order("created_at DESC")
+  session[:q] = nil
+end
+
+def show
+end
+
+def new
+  @post = Post.new
+end
+
+def edit
+end
+
+def create
+  @post = Post.new(post_params)
+    if @post.save
+      redirect_to @post, notice: 'Created successfully !'
+    else
+      render :new 
+    end
+end
+
+def update
+  if @post.update(post_params)
+      redirect_to @post, notice: 'Updated successfully !'
+    else
+      render :edit 
+    end
+end
+
+def destroy
+  @post.destroy
+  redirect_to posts_url, notice: 'Deleted successfully !' 
+end
+```
+
+```ruby
+private
+  # Util methods
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  # Filter request params
+  def post_params
+    params.require(:post).permit(:title, :body, :image_url)
+  end
+end
 ```
