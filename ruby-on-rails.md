@@ -78,7 +78,7 @@ rails db:migrate # RAILS_ENV=dev VERSION=<timestamp>
 rails db:rollback # STEP=3
 ```
 
-Reset DB / re-seed :
+**Reset DB / re-seed :**
 ```md
 # Reset + seed
 rails db:reset
@@ -181,7 +181,7 @@ Product.connection.execute("UPDATE products SET price = 'free' WHERE 1=1")
 
 > Official documentation : [https://guides.rubyonrails.org/routing.html](https://guides.rubyonrails.org/routing.html)
 
-Explicit route :
+**Explicit route :**
 ```ruby
 get 'profile', to: 'users#show'
 get 'products/:id', to: 'products#show'
@@ -189,7 +189,7 @@ get 'exit', to: 'sessions#destroy', as: :logout
 get '/stories', to: redirect('/articles')
 ```
 
-Automatically generate routes for an Entity
+**Automatically generate routes for an Entity :**
 ```ruby
 resources :products
 resources :products, only: [:index, :show]
@@ -199,7 +199,7 @@ resources :products, except: [:delete]
 resource :geocoder
 ```
 
-Routes generated for resources
+**Routes generated for resources :**
 ```
 index
 show
@@ -208,14 +208,14 @@ edit  ->  update
 destroy
 ```
 
-Nested entities
+**Nested entities :**
 ```ruby
 resources :products do
   resources :reviews
 end
 ```
 
-Group routes into a namespace for clarity
+**Group routes into a namespace for clarity :**
 ```ruby
 namespace :admin do
   resources :articles
@@ -234,17 +234,42 @@ end
 
 > Official documentation : [https://guides.rubyonrails.org/action_controller_overview.html](hhttps://guides.rubyonrails.org/action_controller_overview.html)
 
-Relationships :
+**Relationships :**
 ```ruby
 has_many :books
 has_one :author
-belongs_to :book
+belongs_to :author
+
+# Enfore constraint in DB
+belong_to :author, foreign_key: true
 
 # ON DELETE CASCADE
 has_many :books, dependent: :destroy
 ```
 
-Validations :
+<details markdown="1">
+<summary>Many to Many</summary>
+
+```ruby
+class Physician < ApplicationRecord
+  has_many :appointments
+  has_many :patients, through: :appointments
+end
+
+class Appointment < ApplicationRecord
+  belongs_to :physician
+  belongs_to :patient
+end
+
+class Patient < ApplicationRecord
+  has_many :appointments
+  has_many :physicians, through: :appointments
+end
+```
+</details>
+
+
+**Validations :**
 ```ruby
 validates :first_name, presence: true
 validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email'}
@@ -256,7 +281,7 @@ validates :title, length: { minimum: 3, maximum: 100 }
 validates_associated :books
 ```
 
-Check validity in controller :
+**Check validity in controller :**
 ```ruby
 Person.create(name: "John Doe").valid?
 
@@ -265,7 +290,7 @@ p.errors
 p.errors.objects.first.full_message
 ```
 
-Hooks / Callbacks :
+**Hooks / Callbacks :**
 > API Documentation : [https://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html](https://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html)
 
 ```ruby
@@ -284,6 +309,9 @@ before_save :downcase_email
 <hr>
 
 > Official documentation : [https://guides.rubyonrails.org/action_controller_overview.html](https://guides.rubyonrails.org/action_controller_overview.html)
+
+<details markdown="1">
+<summary><b>Click to expand - full controller example</b></summary>
 
 ```ruby
 def index
