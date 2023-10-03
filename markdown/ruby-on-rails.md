@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /ruby-on-rails
 ---
 
 # Ruby on Rails Cheatsheet

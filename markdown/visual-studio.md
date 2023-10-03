@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /visual-studio
 ---
 
 # Visual Studio Cheat Sheet
