@@ -4,6 +4,7 @@ relative_links:
   enabled: true
   collections: true
 include:
+  - ./README.md
   - ./git.md
   - ./markdown.md
   - ./visual-studio.md
