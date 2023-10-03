@@ -248,7 +248,9 @@ has_many :books, dependent: :destroy
 ```
 
 <details markdown="1">
-<summary>Many to Many</summary>
+  <summary>
+  <b>Relationship - Many to Many</b>
+  </summary>
 
 ```ruby
 class Physician < ApplicationRecord
@@ -311,7 +313,7 @@ before_save :downcase_email
 > Official documentation : [https://guides.rubyonrails.org/action_controller_overview.html](https://guides.rubyonrails.org/action_controller_overview.html)
 
 <details markdown="1">
-<summary><b>Click to expand - full controller example</b></summary>
+  <summary><b>Full controller example</b></summary>
 
 ```ruby
 def index
@@ -371,3 +373,4 @@ private
   end
 end
 ```
+</details>
