@@ -48,8 +48,10 @@ rails g model <Entity> <field_name>:<type>
 
 **Controller scaffolding :**
 ```md
-rails g controller <Entity>s <list_of_actions>
-# index show new create edit update delete
+rails g controller <Entity>s <list_of_actions> 
+
+# generate all actions ( index show new create edit update delete )
+rails g scaffold_controller <Entity>s
 ```
 
 **Show all routes :**
@@ -141,12 +143,19 @@ create_table :products do |t|
   t.references :color, null: false, foreign_key: true
   t.timestamps
 end
+```
 
-# Create 'join' table
+**Create 'join' table :**
+```ruby
 create_join_table :products, :categories, column_options: { null: true } do |t|
   t.index :product_id
   t.index :category_id
 end
+```
+
+**Add a reference with a custom name :**
+```ruby
+t.references :author, index: true, foreign_key: { to_table: :users }
 ```
 
 **Edit table :**
@@ -240,6 +249,7 @@ end
 has_many :books
 has_one :author
 belongs_to :author
+has_and_belongs_to_many :parts
 
 # Enfore constraint in DB
 belong_to :author, foreign_key: true
@@ -250,7 +260,7 @@ has_many :books, dependent: :destroy
 
 <details markdown="1">
   <summary>
-  <b>Relationship - Many to Many</b>
+  <b>Many to Many - Specific table</b>
   </summary>
 
 ```ruby
