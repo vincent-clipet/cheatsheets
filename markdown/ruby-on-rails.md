@@ -233,9 +233,9 @@ end
 
 <hr>
 
-> Official documentation : [https://guides.rubyonrails.org/action_controller_overview.html](hhttps://guides.rubyonrails.org/action_controller_overview.html)
-
 **Relationships :**
+> Official documentation : [https://guides.rubyonrails.org/association_basics.html](https://guides.rubyonrails.org/association_basics.html)
+
 ```ruby
 has_many :books
 has_one :author
@@ -271,8 +271,11 @@ end
 ```
 </details>
 
+<hr>
 
 **Validations :**
+> Official documentation : [https://guides.rubyonrails.org/active_record_validations.html](https://guides.rubyonrails.org/active_record_validations.html)
+
 ```ruby
 validates :first_name, presence: true
 validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email'}
@@ -375,3 +378,5 @@ private
 end
 ```
 </details>
+
+<br>
