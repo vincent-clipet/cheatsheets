@@ -155,7 +155,7 @@ end
 
 **Add a reference with a custom name :**
 ```ruby
-t.references :author, index: true, foreign_key: { to_table: :users }
+t.references :author, foreign_key: { to_table: :users }
 ```
 
 **Edit table :**
@@ -252,7 +252,10 @@ belongs_to :author
 has_and_belongs_to_many :parts
 
 # Enfore constraint in DB
-belong_to :author, foreign_key: true
+belongs_to :author, foreign_key: true
+
+# Add a relationship with a custom name
+belongs_to :author, class_name: "User", foreign_key: "author_id"
 
 # ON DELETE CASCADE
 has_many :books, dependent: :destroy
