@@ -19,13 +19,13 @@ bundle install
 
 **Start server :**
 ```md
-# start server
 rails server
-
-# start irb
-rails console
 ```
 
+**Start IRB :**
+```md
+rails console
+```
 
 
 
@@ -601,4 +601,58 @@ end
 <% end %>
 ```
 
+
+
+
+
+<br>
+
+### **Views - Forms**
+
+**Model form :**
+```erb
+<%= form_with(model: product) do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title, class: 'form-control' %>
+  <%= form.submit %>
+<% end %>
+```
+
+**Other form :**
+```erb
+<%# Add 'local: false' for external API calls %>
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query, placeholder: 'search' %>
+  <%= form.submit "Search", class: 'btn btn-primary' %>
+<% end %>
+```
+
 <hr>
+
+**Textarea :**
+```erb
+<%# Textarea %>
+<%= form.text_area :description, rows: 10, cols: 60 %>
+```
+
+**Select / Options :**
+```erb
+<%= form.select :type, Customer.types.keys, prompt: 'Select a type' %>
+<%= form.select :rating, (1..5) %>
+
+<%# Select (field, collection, key, value, label) %>
+<%= form.collection_select :category_id,
+                           Category.all,
+                           :id,
+                           :name,
+                           {include_blank: '- Select a Category -'}, {class: 'form-select'}
+```
+
+<hr>
+
+**Misc :**
+```erb
+<%# if form in new or edit mode change submit text %> 
+<%= form.submit @product.new_record? ? 'Create' : 'Update' %>
+```
