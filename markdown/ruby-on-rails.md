@@ -526,7 +526,9 @@ end
 
 ### **Views**
 
-**The usual functions :**
+> Document : [Layouts and Rendering](https://guides.rubyonrails.org/layouts_and_rendering.html)
+
+**The usual ones :**
 ```erb
 <%= @user.name %>
 <% if @user.name == 'Mike' %>
@@ -609,6 +611,8 @@ end
 
 ### **Views - Forms**
 
+> Documentation : [Form helpers](https://guides.rubyonrails.org/form_helpers.html)
+
 **Model form :**
 ```erb
 <%= form_with(model: product) do |form| %>
@@ -641,6 +645,19 @@ end
 <%= form.select :type, Customer.types.keys, prompt: 'Select a type' %>
 <%= form.select :rating, (1..5) %>
 
+<%= form.select :city, [["Berlin", "BE"], ["Chicago", "CHI"]], selected: "CHI" %>
+<%= form.select :city,
+      {
+        "Europe" => [ ["Berlin", "BE"], ["Madrid", "MD"] ],
+        "North America" => [ ["Chicago", "CHI"] ],
+      },
+      selected: "CHI" %>
+
+# Date select
+<%= form_with model: @person do |form| %>
+  <%= form.date_select :birth_date %>
+<% end %>
+
 <%# Select (field, collection, key, value, label) %>
 <%= form.collection_select :category_id,
                            Category.all,
@@ -648,6 +665,17 @@ end
                            :name,
                            {include_blank: '- Select a Category -'}, {class: 'form-select'}
 ```
+
+**Checkbox & Radio :**
+```erb
+<%= form.check_box :pet_dog %>
+<%= form.label :pet_dog, "I own a dog" %>
+
+<%= form.radio_button :age, "adult" %>
+<%= form.label :age_adult, "I am over 21" %>
+```
+
+> Documentation : [Other helpers](https://guides.rubyonrails.org/form_helpers.html#other-helpers-of-interest)
 
 <hr>
 
