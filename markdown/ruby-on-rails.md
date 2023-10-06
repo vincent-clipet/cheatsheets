@@ -69,7 +69,7 @@ rails routes
 
 <hr>
 
-> Official documentation : [https://guides.rubyonrails.org/active_record_migrations.html](https://guides.rubyonrails.org/active_record_migrations.html)
+> Documentation : [Active Record Migrations](https://guides.rubyonrails.org/active_record_migrations.html)
 
 **Run migrations :**
 ```bash
@@ -189,7 +189,7 @@ Product.connection.execute("UPDATE products SET price = 'free' WHERE 1=1")
 
 <hr>
 
-> Official documentation : [https://guides.rubyonrails.org/routing.html](https://guides.rubyonrails.org/routing.html)
+> Documentation : [Routing](https://guides.rubyonrails.org/routing.html)
 
 **Explicit route :**
 ```ruby
@@ -243,7 +243,7 @@ end
 <hr>
 
 **Relationships :**
-> Official documentation : [https://guides.rubyonrails.org/association_basics.html](https://guides.rubyonrails.org/association_basics.html)
+> Documentation : [Association basics](https://guides.rubyonrails.org/association_basics.html)
 
 ```ruby
 has_many :books
@@ -287,7 +287,7 @@ end
 <hr>
 
 **Validations :**
-> Official documentation : [https://guides.rubyonrails.org/active_record_validations.html](https://guides.rubyonrails.org/active_record_validations.html)
+> Documentation : [Active Record Validations](https://guides.rubyonrails.org/active_record_validations.html)
 
 ```ruby
 validates :first_name, presence: true
@@ -310,7 +310,7 @@ p.errors.objects.first.full_message
 ```
 
 **Hooks / Callbacks :**
-> API Documentation : [https://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html](https://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html)
+> Documentation : [Callbacks](https://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html)
 
 ```ruby
 before_destroy :ensure_not_reference_by_any_invoices 
@@ -332,7 +332,7 @@ private
 
 <hr>
 
-> Official documentation : [https://guides.rubyonrails.org/action_controller_overview.html](https://guides.rubyonrails.org/action_controller_overview.html)
+> Documentation : [Action Controller](https://guides.rubyonrails.org/action_controller_overview.html)
 
 <details markdown="1">
   <summary><b>Full controller example</b></summary>
