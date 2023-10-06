@@ -315,6 +315,11 @@ p.errors.objects.first.full_message
 ```ruby
 before_destroy :ensure_not_reference_by_any_invoices 
 before_save :downcase_email 
+
+before_action :set_post, only: [ :show, :edit, :update, :destroy ]
+private
+  def set_post
+  ...
 ```
 
 
@@ -393,3 +398,107 @@ end
 </details>
 
 <br>
+
+
+
+
+
+<br>
+
+### **Active Record**
+
+<hr>
+
+> Documentation : [Active Record](https://guides.rubyonrails.org/active_record_querying.html)
+
+```ruby
+Article.find(params[:id])                # will error if not found
+Article.find_by(product_id: product_id)  # will not error if no results
+Article.find_by_name("Blaster 3000")
+Article.find_by_name_and_parts_count("Blaster 3000", 3)
+```
+```ruby
+Article.where('quantity > 1')
+Article.where(cat_id: cat_id)
+Article.where(model: model).or(Article.where(cat_id: cat_id))
+Article.where("title LIKE ?", "%" + params[:q] + "%")
+Article.join(:categories).where(categories: { id: 2 } )
+Article.offset(5).limit(10).all
+Article.select(:id).map(&:id)
+```
+```ruby
+Article.count
+Article.all
+Article.delete_all
+Article.ids
+Article.exists?(1)
+```
+
+> Documentation : [Calculations](https://guides.rubyonrails.org/active_record_querying.html#calculations) \| [Grouping](https://guides.rubyonrails.org/active_record_querying.html#grouping)
+
+```ruby
+Article.group(:product_id).sum(:quantity)
+Article.select("created_at, sum(total) as total_price")
+  .group("created_at").having("sum(total) > ?", 200)
+```
+
+> Documentation : [Joining](https://guides.rubyonrails.org/active_record_querying.html#joining-tables) \| [n+1 Eager Loading](https://guides.rubyonrails.org/active_record_querying.html#eager-loading-associations)
+
+```ruby
+# Join
+User.joins(:posts).select('distinct users.*')
+User.joins(:posts).select(“users.id, posts.published as published”).where(id: 1)
+
+# Preload (can't use WHERE here)
+User.preload(:posts) # 
+
+# Includes
+User.includes(:posts).where(posts: { published: true })
+Post.includes({ comments: [:author] }, :author).find(params[:id])
+
+# Eager load
+User.eager_load(:posts).where("posts.published = ?", true)
+```
+> Documentation : [Find or create](https://guides.rubyonrails.org/active_record_querying.html#find-or-build-a-new-object)
+
+```ruby
+Customer.find_or_create_by(first_name: 'Andy')
+nina = Customer.find_or_initialize_by(first_name: 'Nina')
+```
+
+> Documentation : [Scopes](https://guides.rubyonrails.org/active_record_querying.html#scopes)
+
+```ruby
+class Book < ApplicationRecord
+  scope :out_of_print, -> { where(out_of_print: true) }
+  scope :out_of_print_and_expensive, -> { out_of_print.where("price > 500") }
+
+  scope :costs_more_than, ->(amount) { where("price > ?", amount) }
+
+  scope :created_before, ->(time) { where(created_at: ...time) if time.present? }
+
+  # Apply to all queries in this model
+  default_scope { where(out_of_print: false) }
+end
+
+class BookController < ApplicationController
+  Book.out_of_print
+  author.books.out_of_print
+
+  Book.costs_more_than(100.10)
+end
+```
+
+> Documentation : [Enums](https://guides.rubyonrails.org/active_record_querying.html#enums)
+
+```ruby
+class Order < ApplicationRecord
+  enum :status, [:shipped, :being_packaged, :complete, :cancelled]
+end
+
+class OrderController < ApplicationController
+  all_shipped_orders = Order.shipped
+  order = Order.shipped.first
+  order.shipped?
+end
+```
