@@ -656,3 +656,54 @@ end
 <%# if form in new or edit mode change submit text %> 
 <%= form.submit @product.new_record? ? 'Create' : 'Update' %>
 ```
+
+
+
+
+
+<br>
+
+### **Flash, Session and Cookie**
+
+**Flash :**
+```rb
+# Create flash (reset every new request)
+flash[:success] = 'User created with success!'
+
+# Create flash.now (reset every new view render)
+flash.now[:error] = 'Please select a user!'
+```
+
+**Session :**
+```rb
+# Create session (reset every browser close)
+session[:user_id] = user.id
+
+# Check if session exist
+session[:user_id].nil?
+
+# Remove / wipe
+session.delete(:user_id)
+reset_session      
+```
+
+**Cookie :**
+```rb
+# Create cookie
+cookies.permanent[:remember_token] = remember_token
+
+# Encrypted cookie
+cookies.permanent.encrypted[:user_id] = user.id
+
+# Delete cookie
+cookies.delete(:user_id)
+```
+
+
+
+
+
+<br>
+<hr>
+
+Some parts of this cheatsheet come from [My beloved Ruby on Rails cheat sheet](https://dev.to/ericchapman/my-beloved-ruby-on-rails-cheat-sheet-50pi) made by [Eric The Coder](https://github.com/rickavmaniac).
