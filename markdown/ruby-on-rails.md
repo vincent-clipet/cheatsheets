@@ -49,7 +49,8 @@ rails g model <Entity> <field_name>:<type>
 **Controller scaffolding :**
 ```md
 rails g controller <Entity>s <list_of_actions> 
-
+```
+```md
 # generate all actions ( index show new create edit update delete )
 rails g scaffold_controller <Entity>s
 ```
@@ -83,12 +84,11 @@ rails db:rollback # STEP=3
 
 **Reset DB / re-seed :**
 ```md
-# Reset + seed
+rails db:drop
 rails db:reset
-
-# Just re-seed
 rails db:seed
 ```
+<hr>
 
 **Create a new migration :**
 ```ruby
@@ -145,19 +145,6 @@ create_table :products do |t|
 end
 ```
 
-**Create 'join' table :**
-```ruby
-create_join_table :products, :categories, column_options: { null: true } do |t|
-  t.index :product_id
-  t.index :category_id
-end
-```
-
-**Add a reference with a custom name :**
-```ruby
-t.references :author, foreign_key: { to_table: :users }
-```
-
 **Edit table :**
 ```ruby
 add_column :products, :description, :text
@@ -172,6 +159,21 @@ end
 # Set special values
 change_column_null :products, :name, false
 change_column_default :products, :approved, from: true, to: false
+```
+
+<hr>
+
+**Create 'join' table :**
+```ruby
+create_join_table :products, :categories, column_options: { null: true } do |t|
+  t.index :product_id
+  t.index :category_id
+end
+```
+
+**Add a reference with a custom name :**
+```ruby
+t.references :author, foreign_key: { to_table: :users }
 ```
 
 **Hand-made SQL :**
@@ -209,15 +211,6 @@ resources :products, except: [:delete]
 resource :geocoder
 ```
 
-**Routes generated for resources :**
-```
-index
-show
-new   ->  create
-edit  ->  update
-destroy
-```
-
 **Nested entities :**
 ```ruby
 resources :products do
@@ -230,6 +223,15 @@ end
 namespace :admin do
   resources :articles
 end
+```
+
+**Routes generated for resources :**
+```
+index
+show
+new   ->  create
+edit  ->  update
+destroy
 ```
 
 
@@ -308,6 +310,8 @@ Person.create(name: "John Doe").valid?
 p.errors
 p.errors.objects.first.full_message
 ```
+
+<hr>
 
 **Hooks / Callbacks :**
 > Documentation : [Callbacks](https://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html)
@@ -434,6 +438,8 @@ Article.ids
 Article.exists?(1)
 ```
 
+<hr>
+
 > Documentation : [Calculations](https://guides.rubyonrails.org/active_record_querying.html#calculations) \| [Grouping](https://guides.rubyonrails.org/active_record_querying.html#grouping)
 
 ```ruby
@@ -441,6 +447,8 @@ Article.group(:product_id).sum(:quantity)
 Article.select("created_at, sum(total) as total_price")
   .group("created_at").having("sum(total) > ?", 200)
 ```
+
+<hr>
 
 > Documentation : [Joining](https://guides.rubyonrails.org/active_record_querying.html#joining-tables) \| [n+1 Eager Loading](https://guides.rubyonrails.org/active_record_querying.html#eager-loading-associations)
 
@@ -459,12 +467,17 @@ Post.includes({ comments: [:author] }, :author).find(params[:id])
 # Eager load
 User.eager_load(:posts).where("posts.published = ?", true)
 ```
+
+<hr>
+
 > Documentation : [Find or create](https://guides.rubyonrails.org/active_record_querying.html#find-or-build-a-new-object)
 
 ```ruby
 Customer.find_or_create_by(first_name: 'Andy')
 nina = Customer.find_or_initialize_by(first_name: 'Nina')
 ```
+
+<hr>
 
 > Documentation : [Scopes](https://guides.rubyonrails.org/active_record_querying.html#scopes)
 
@@ -489,6 +502,8 @@ class BookController < ApplicationController
 end
 ```
 
+<hr>
+
 > Documentation : [Enums](https://guides.rubyonrails.org/active_record_querying.html#enums)
 
 ```ruby
@@ -502,3 +517,88 @@ class OrderController < ApplicationController
   order.shipped?
 end
 ```
+
+
+
+
+
+<br>
+
+### **Views**
+
+**The usual functions :**
+```erb
+<%= @user.name %>
+<% if @user.name == 'Mike' %>
+
+<%# link_to %>
+<%= link_to 'Show', @product %>
+<%= link_to 'About', about_path, class: 'nav-link' %>
+<%= link_to 'Item record', item_path(@item) %>
+<%= link_to category_path do %>
+  <%= @product.category.name %>
+<% end %>
+
+<%# Delete link %>
+<%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%# Post link %>
+<%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+<%# Button form %>
+<%= button_to 'Logout', logout_path, method: :delete %>
+
+<%# Image %>
+<%= image_tag "rails.png" %>
+```
+
+**Render a collection :**
+```erb
+<% @users.each do |user| %>
+  <%= user.name %>
+<% end %>
+
+<%# Will be rendered by _user.html.erb %>
+<%= render @users %> 
+```
+
+**Utils :**
+```erb
+<%# Format currency %>
+<%= number_to_currency(product.price) %>
+
+<%# Safe Html through sanitization %>
+<%= sanitize(product.description) %>
+
+<%# Check current url %>
+<%= request.path.include?('post') ? 'active' : '' %>">
+<%= current_page?('about') ? 'active' : '' %>">
+```
+
+**Partial views :**
+```erb
+<%= render partial: 'shared/navbar' %>
+<%# Pass variable @post as "post" to partial view %>
+<%= render partial: "post_with_comments", object: @post, as: :post %>
+
+<%= render 'form', product: @product %>
+```
+
+**Error messages :**
+```erb
+<% if @post.errors.any? %> 
+<% if form.object.errors.any? %>
+
+<% if @post.errors.empty? %>
+  <% @post.errors.full_messages.each do |message| %>
+    <p class='error'><%= message %></p>
+  <%= user.errors.count %>
+<%= post.errors[:description] %>
+
+<%# Flash messages %>
+<% flash.each do |msg_type, msg| %>
+  <div class="alert alert-<%= msg_type %>">
+    <%= msg %>
+  </div>
+<% end %>
+```
+
+<hr>
