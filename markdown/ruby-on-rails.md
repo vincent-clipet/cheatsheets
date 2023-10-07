@@ -293,10 +293,14 @@ end
 
 ```ruby
 validates :first_name, presence: true
-validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email'}
-validates :price, numericality: { greater_than_equal_to: 0.01 }
 validates :title, uniqueness: true
+validates_uniqueness_of :title
+
+validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email'}
 validates :title, length: { minimum: 3, maximum: 100 }
+validates_numericality_of :rating, { only_integer: true, allow_nil: true }
+validates_numericality_of :rating, { only_integer: true, greater_than_equal_to: 0, lesser_than_or_equal_to: 10 }
+validates_inclusion_of :rating, :in => 0..10
 
 # Also validate related entities when creating/updating both
 validates_associated :books
@@ -505,6 +509,12 @@ end
 <hr>
 
 > Documentation : [Enums](https://guides.rubyonrails.org/active_record_querying.html#enums)
+
+```ruby
+create_table :orders do |t|
+  t.integer :status, default: 0
+end
+```
 
 ```ruby
 class Order < ApplicationRecord
