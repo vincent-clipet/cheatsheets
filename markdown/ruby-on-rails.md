@@ -298,6 +298,7 @@ validates_uniqueness_of :title
 
 validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email'}
 validates :title, length: { minimum: 3, maximum: 100 }
+validates :status, allow_blank: true
 validates_numericality_of :rating, { only_integer: true, allow_nil: true }
 validates_numericality_of :rating, { only_integer: true, greater_than_equal_to: 0, lesser_than_or_equal_to: 10 }
 validates_inclusion_of :rating, :in => 0..10
