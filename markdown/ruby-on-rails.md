@@ -429,6 +429,7 @@ Article.find_by_name_and_parts_count("Blaster 3000", 3)
 ```ruby
 Article.where('quantity > 1')
 Article.where(cat_id: cat_id)
+Article.where(type: [2,6,11])
 Article.where(model: model).or(Article.where(cat_id: cat_id))
 Article.where("title LIKE ?", "%" + params[:q] + "%")
 Article.join(:categories).where(categories: { id: 2 } )
