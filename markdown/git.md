@@ -125,6 +125,13 @@ Interactive rollback. Pick an action for each rollbacked commit 1-by-1 :
 git reset --keep
 ```
 
+Overwrite the current branch with the version stored on the server (forced pull) :
+```bash
+git fetch --all
+git branch backup-master
+git reset --hard origin/master
+```
+
 Dry-run of `rm` :
 ```bash
 rm -n
