@@ -85,7 +85,7 @@ docker logs -f <container_name>
 
 <hr>
 
-To inspect a running container:
+Inspect a running container *(full JSON export)* :
 ```md
 docker inspect <container_name> (or <container_id>)
 ```
@@ -106,9 +106,9 @@ docker container stats
 <hr>
 
 
-Executes a `docker-compose.yml` file *(includes build)* :
+Executes a `docker-compose.yml` file *(includes build if containers do not exist yet)* :
 ```md
-docker compose up -d
+docker-compose up -d
 ```
 
 Start/stop an existing `docker-compose` :
@@ -119,7 +119,7 @@ docker-compose stop
 
 Executes only 1 specific task from the `docker-compose.yml` file :
 ```md
-docker-compose run <task_name>
+docker-compose run <task_name> -d
 ```
 
 
