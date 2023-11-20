@@ -75,7 +75,7 @@ docker rm <container_name>
 
 Open a shell inside a running container :
 ```md
-docker exec -it <container_name> sh
+docker exec -it <container_name> bash
 ```
 
 Fetch and follow the logs of a container :
