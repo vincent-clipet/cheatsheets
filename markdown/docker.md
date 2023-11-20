@@ -83,6 +83,11 @@ Fetch and follow the logs of a container :
 docker logs -f <container_name>
 ```
 
+Copy a local file into a container :
+```md
+docker cp <local_file> <container_name>:<target_folder>
+```
+
 <hr>
 
 Inspect a running container *(full JSON export)* :
