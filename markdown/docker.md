@@ -42,13 +42,45 @@ docker ps -a
 
 <br>
 
+### Images
+
+<hr>
+
+List all available images :
+```md
+docker image ls
+```
+
+Build an Image from a Dockerfile :
+```md
+docker build <image_name> <folder_to_build>
+docker build -t <image_name>(:<tag>) <folder_to_build>
+docker build -t app:dev .
+```
+
+Delete an Image :
+```md
+docker image rm <image>
+```
+
+Remove all unused images :
+```md
+docker image prune
+```
+
+
+
+
+
+<br>
+
 ### Containers
 
 <hr>
 
 Create and run a container from an image :
 ```md
-docker run --name <container_name> <image_name>
+docker run --name <container_name> <image>
 ```
 
 Start/stop a container :
@@ -58,41 +90,45 @@ docker start|stop <container_name> (or <container-id>)
 
 Run a container with and publish a container’s port(s) to the host :
 ```md
-docker run -p <host_port>:<container_port> <image_name>
+docker run -p <host_port>:<container_port> <image>
 ```
 
 Run a container in background-mode :
 ```md
-docker run -d <image_name>
+docker run -d <image>
 ```
 
 Remove a stopped container :
 ```md
-docker rm <container_name>
+docker rm <container>
 ```
 
 <hr>
 
 Open a shell inside a running container :
 ```md
-docker exec -it <container_name> bash
+docker exec -it <container> bash
 ```
 
-Fetch and follow the logs of a container :
+Display the logs of a container :
 ```md
-docker logs -f <container_name>
+docker logs <container>
+docker logs -f <container>                    # tail -f
+docker logs --tail 100 <container>            # tail -100
+docker logs --follow --until=30m              # last 30m
+docker logs --since 2023-01-01 <container>    # since 2023/01/01
 ```
 
 Copy a local file into a container :
 ```md
-docker cp <local_file> <container_name>:<target_folder>
+docker cp <local_file> <container>:<target_folder>
 ```
 
 <hr>
 
 Inspect a running container *(full JSON export)* :
 ```md
-docker inspect <container_name> (or <container_id>)
+docker inspect <container>
 ```
 
 View resource usage stats :
@@ -124,7 +160,7 @@ docker-compose stop
 
 Executes only 1 specific task from the `docker-compose.yml` file :
 ```md
-docker-compose run <task_name> -d
+docker-compose run -d <task_name>
 ```
 
 
@@ -133,32 +169,14 @@ docker-compose run <task_name> -d
 
 <br>
 
-### Images
+### Docker Hub / Repository
 
 <hr>
 
-Build an Image from a Dockerfile :
+Login into a private repository, to avoid copying SSH keys everywhere !
 ```md
-docker build -t <image_name>
+docker login <private_repo_url>
 ```
-
-Delete an Image :
-```md
-docker rmi <image_name>
-```
-
-Remove all unused images :
-```md
-docker image prune
-```
-
-
-
-
-
-<br>
-
-### Docker Hub
 
 <hr>
 
