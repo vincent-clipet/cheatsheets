@@ -177,7 +177,7 @@ git push --set-upstream origin main -f
 
 <br>
 
-### stash
+### Stash
 
 <hr>
 
@@ -223,6 +223,41 @@ git stash clear
 
 <br>
 
+### Tags
+
+<hr>
+
+Add a tag to the current commit :
+```bash
+git tag <tag_name>
+git tag -m "<description>" <tag_name>
+
+# Push to remote
+git push --tags
+```
+
+Tag an older commit / other branch :
+```bash
+git tag <tag_name> <ref>
+```
+
+Delete a tag :
+```bash
+git tag --delete <tag_name>
+git push --delete origin <tag_name>
+```
+
+Overwrite (= move) an existing tag :
+```bash
+git tag -f <tag_name> <ref>
+```
+
+
+
+
+
+<br>
+
 ### Misc
 
 <hr>
@@ -244,8 +279,7 @@ git rev-list HEAD -n 1 -- <file>
 
 Merge 2 repos together
 ```bash
-# In repo A
-
+cd <A>
 git remote add -f <B> <B_url>
 git merge <B>/master
 
