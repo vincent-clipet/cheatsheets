@@ -132,6 +132,11 @@ git branch backup-master
 git reset --hard origin/master
 ```
 
+Reset the date (and author) after an interactive rebase :
+```md
+git commit --amend --reset-author
+```
+
 Dry-run of `rm` :
 ```md
 rm -n
