@@ -50,6 +50,11 @@ nvm alias default node
 nvm alias default 18.12
 ```
 
+Install the most recent NPM version for the current Node version :
+```bash
+nvm install-latest-npm
+```
+
 
 
 
