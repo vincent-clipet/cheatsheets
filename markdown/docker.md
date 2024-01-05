@@ -36,6 +36,11 @@ docker ps
 docker ps -a
 ```
 
+Display memory/CPU usage for all containers :
+```md
+docker container stats
+```
+
 
 
 
@@ -124,16 +129,16 @@ Copy a local file into a container :
 docker cp <local_file> <container>:<target_folder>
 ```
 
+Copy a file from a container :
+```md
+docker cp <container>:<file> <local_destination>
+```
+
 <hr>
 
 Inspect a running container *(full JSON export)* :
 ```md
 docker inspect <container>
-```
-
-View resource usage stats :
-```md
-docker container stats
 ```
 
 
@@ -160,7 +165,9 @@ docker-compose stop
 
 Executes only 1 specific task from the `docker-compose.yml` file :
 ```md
+docker-compose pull <task_name>
 docker-compose run -d <task_name>
+docker-compose up -d <task_name>
 ```
 
 
