@@ -11,6 +11,62 @@ permalink: /unix
 
 <br>
 
+### ls / find
+
+<hr>
+
+Find biggest files :
+```md
+find <folder> -type f -exec du -Sh {} + | sort -rh | head -n <number_of_results>
+find . -type f -exec du -Sh {} + | sort -rh | head -n 20
+```
+
+Find biggest directories :
+```md
+# Top-level only
+du -hs * | sort -rh | head -<number_of_results>
+du -hs * | sort -rh | head -20
+
+# Recursive, will have duplicate entries from subdirectories
+du -a <search_root> | sort -n -r | head -n <number_of_results>
+du -a . | sort -n -r | head -n 20
+```
+
+
+
+
+
+<br>
+
+### tar / zip
+
+<hr>
+
+tar :
+```md
+tar -cvf <archive.tar> <folder_to_archive>
+tar -zcvf <archive.tar.gz> <folder_to_archive>
+```
+
+untar :
+```md
+tar -xvf <archive.tar> (-C <destination_folder>)
+tar -zxvf <archive.tar.gz> (-C <destination_folder>)
+```
+
+List files inside archive :
+```md
+tar –tf <archive.tar>
+tar –tzf <archive.tar.gz>
+unzip -l <archive.zip>
+```
+
+
+
+
+
+<br>
+
 ### Rsync
 
 <hr>
