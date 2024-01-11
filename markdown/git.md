@@ -16,6 +16,12 @@ Display diff between staging area and working directory :
 git diff --staged
 ```
 
+Show the difference between current branch and its remote counterpart :
+```md
+git fetch
+git log ..origin/$(git rev-parse --abbrev-ref HEAD)
+```
+
 Show commit logs with paths that moved :
 ```md
 git log --stat -M
