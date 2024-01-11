@@ -6,5 +6,7 @@
 		".vscode": true,
 		"Gemfile*": true,
 		"jekyll_preview.sh": true
-	}
+	},
+	"prettier.proseWrap": "never",
+	"prettier.enable": false
 }
