@@ -64,6 +64,11 @@ Print detailed info of the remote & its content (remotes branches for example) :
 git remote show origin
 ```
 
+Update remote URL :
+```md
+git remote set-url origin [new-url]
+```
+
 
 
 
