@@ -38,6 +38,25 @@ du -a . | sort -n -r | head -n 20
 
 <br>
 
+### sed / grep
+
+<hr>
+
+Find first line matching a pattern in a file :
+```md
+sed '/<pattern>/!d;=;Q' <file>>
+```
+
+Cut a slice of a file, between 2 given line numbers :
+```md
+sed -n '<first_line>,<last_line>p;<last_line_plus_1>q' <input_file> > <output_file>
+```
+
+
+
+
+<br>
+
 ### tar / zip
 
 <hr>
