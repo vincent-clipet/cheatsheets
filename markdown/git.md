@@ -180,6 +180,9 @@ git clone <remote_url>
 The critical part :
 ```md
 git-filter-repo --path <file_to_remove> --invert-paths --force
+
+# Variant : filtering only certain branches & tags
+git-filter-repo --path <file_to_remove> --invert-paths --force --refs main develop $(git tag -l)
 ```
 
 Re-set the remote_url, and force-push the new repo :
