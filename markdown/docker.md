@@ -41,6 +41,16 @@ Display memory/CPU usage for all containers :
 docker container stats
 ```
 
+Display disk usage for all images / containers / volumes :
+```md
+docker system df
+```
+
+Delete all unused images, unused networks and stopped containers :
+```md
+docker system prune
+```
+
 
 
 
@@ -106,6 +116,11 @@ docker run -d <image>
 Remove a stopped container :
 ```md
 docker rm <container>
+```
+
+Remove all stopped containers :
+```md
+docker container prune
 ```
 
 <hr>
