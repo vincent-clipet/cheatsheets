@@ -68,3 +68,38 @@ Kill a running process :
 ```sql
 KILL @process_id;
 ```
+
+
+
+
+
+<br>
+
+### Fresh install
+
+<hr>
+
+Install MariaDB :
+```bash
+sudo apt install mariadb-server
+```
+
+Run setup script :
+```bash
+sudo mysql_secure_installation
+```
+
+Connect to DB :
+```bash
+mysql -u root -p
+```
+
+Create a new user :
+```sql
+CREATE USER '--USERNAME--'@'localhost' IDENTIFIED BY '--PASSWORD--';
+```
+
+Grant full access to a single DB :
+```sql
+GRANT ALL PRIVILEGES ON database.tables TO '--USERNAME--'@'localhost'; -- Replace 'database' and 'tables'
+```
