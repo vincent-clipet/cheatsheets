@@ -55,6 +55,7 @@ sed -n '<first_line>,<last_line>p;<last_line_plus_1>q' <input_file> > <output_fi
 
 
 
+
 <br>
 
 ### tar / zip
@@ -135,3 +136,33 @@ Limit bandwidth :
 --bwlimit=<size_in_kbps>
 ```
 
+
+
+
+
+<br>
+
+### Fresh install
+
+<hr>
+
+Setup root password :
+```md
+sudo passwd root
+```
+
+Create a new user and its `/home` directory :
+```md
+sudo useradd -m test
+```
+
+Add SSH keys :
+```md
+sudo mkdir /home/<user>/.ssh
+sudo nano /home/<user>/.ssh/authorized_keys
+```
+
+Change the default shell to bash :
+```md
+sudo chsh -s /bin/bash <user>
+```
