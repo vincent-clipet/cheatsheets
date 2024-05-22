@@ -145,7 +145,12 @@ Renew existing certifcates :
 certbot renew
 ```
 
+Check the list of currentlty running vhosts :
+```bash
+a2query -s
+```
+
 Add a certificate to a newly-created Apache2 vhost :
 ```bash
-certbot --apache -d [vhost]
+certbot --apache -d [domain]
 ```
