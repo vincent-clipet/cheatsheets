@@ -33,6 +33,11 @@ git log branch_B..branch_A
 git diff branch_B...branch_A
 ```
 
+Show the commit log with orphaned commits (which might have been orphaned by a rebase) :
+```md
+git log --graph --reflog
+```
+
 
 
 
