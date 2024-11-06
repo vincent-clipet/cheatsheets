@@ -7,6 +7,7 @@ permalink: /
 
 - ### [Docker](https://vincent-clipet.github.io/cheatsheets/docker)
 - ### [Git](https://vincent-clipet.github.io/cheatsheets/git)
+- ### [JetBrains IDEs](https://vincent-clipet.github.io/cheatsheets/jetbrains)
 - ### [Laravel](https://vincent-clipet.github.io/cheatsheets/laravel)
 <!-- - ### [Markdown tags](https://vincent-clipet.github.io/cheatsheets/markdown) `(needs cleaning)` -->
 - ### [MySQL](https://vincent-clipet.github.io/cheatsheets/mysql)
