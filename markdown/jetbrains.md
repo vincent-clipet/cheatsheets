@@ -68,14 +68,10 @@ Shift + F1
 
 ## File navigation
 
-Search by file name :
-```
-Ctrl + Shift + N
-```
-
-Search by class/type :
+Search by class / file name :
 ```
 Ctrl + N
+Ctrl + Shift + N
 ```
 
 Go to line # :
@@ -86,6 +82,7 @@ Ctrl + G
 List recent files :
 ```
 Ctrl + E
+Ctrl + Shift + E
 ```
 
 Focus the project explorer panel :
@@ -234,6 +231,16 @@ Ctrl + R
 Ctrl + Shift + R
 ```
 
+Duplicate line :
+```
+Ctrl + D
+```
+
+Move line up/down :
+```
+Alt + Shift + ↓
+```
+
 Complete current statement :
 ```
 Ctrl + Shift + Enter
@@ -258,24 +265,15 @@ Ctrl + Alt + J
 
 ## Refactoring
 
-Refactor current selection :
-```
-Ctrl + Alt + Shift + T
-```
-
 Rename :
 ```
 Shift + F6
 ```
 
-Change signature :
+Refactor :
 ```
 Ctrl + F6
-```
-
-Safe delete :
-```
-Alt + Del
+Ctrl + Alt + Shift + T
 ```
 
 Extract variable/field/method :
@@ -283,6 +281,11 @@ Extract variable/field/method :
 Ctrl + Alt + V
 Ctrl + Alt + F
 Ctrl + Alt + M
+```
+
+Safe delete :
+```
+Alt + Del
 ```
 
 Copy / move current file :
