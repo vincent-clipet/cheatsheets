@@ -110,6 +110,7 @@ Ctrl + B
 Find usages :
 ```
 Alt + F7
+Ctrl + Alt + F7
 ```
 
 Find next occurrence :
