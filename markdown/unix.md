@@ -173,6 +173,43 @@ sudo chsh -s /bin/bash <user>
 
 <br>
 
+### iptables
+
+<hr>
+
+List all rules in a proper table :
+```md
+iptables --list
+```
+
+List all rules commands :
+```md
+iptables -S
+```
+
+Save current config to disk :
+```md
+iptables-save
+```
+
+Whitelist a specific IP adress :
+```md
+iptables -A INPUT  -s 1.2.3.4 -p tcp -j ACCEPT
+iptables -A OUTPUT -d 1.2.3.4 -p tcp -j ACCEPT
+```
+
+Whitelist a specific port :
+```
+iptables -A INPUT  -p tcp -m tcp --dport 2022 -j ACCEPT
+iptables -A OUTPUT -p tcp -m tcp --dport 2022 -j ACCEPT
+```
+
+
+
+
+
+<br>
+
 ### Misc
 
 <hr>
