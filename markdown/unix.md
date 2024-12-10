@@ -166,3 +166,18 @@ Change the default shell to bash :
 ```md
 sudo chsh -s /bin/bash <user>
 ```
+
+
+
+
+
+<br>
+
+### Misc
+
+<hr>
+
+List all crontabs for all users :
+```bash
+for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
+```
