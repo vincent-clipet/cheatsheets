@@ -75,6 +75,34 @@ KILL @process_id;
 
 <br>
 
+### Emergency
+
+<hr>
+
+Diff between the same table in 2 DB :
+```sql
+INSERT INTO db_prod.`table`
+SELECT A.* FROM db_backup.`table` A
+LEFT JOIN db_prod.`table` B
+ON A.id = B.id
+WHERE B.id IS NULL;
+```
+
+Insert the diff into the DB *(for example to restore deleted entities)* :
+```sql
+INSERT INTO db_prod.`table`
+SELECT A.* FROM db_backup.`table` A
+LEFT JOIN db_prod.`table` B
+ON A.id = B.id
+WHERE B.id IS NULL;
+```
+
+
+
+
+
+<br>
+
 ### Fresh install
 
 <hr>
