@@ -58,9 +58,15 @@ List all available versions :
 rbenv install --list
 ```
 
-Install a specific version :
+Install a specific version (no YJIT) :
 ```bash
 rbenv install [specific_version]
+```
+
+Install a specific version (with YJIT) :
+```bash
+apt install rustc
+RUBY_CONFIGURE_OPTS="--enable-yjit" rbenv install [specific_version]
 ```
 
 Set a specific version as the default for all consoles / everything / only the current directory :
