@@ -32,6 +32,11 @@ du -a <search_root> | sort -n -r | head -n <number_of_results>
 du -a . | sort -n -r | head -n 20
 ```
 
+Delete all files older than 30 days :
+```md
+find <folder> -mindepth 1 -mtime +30 -delete
+```
+
 
 
 
