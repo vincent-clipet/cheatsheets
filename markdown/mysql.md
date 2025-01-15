@@ -131,3 +131,21 @@ Grant full access to a single DB :
 ```sql
 GRANT ALL PRIVILEGES ON database.tables TO '--USERNAME--'@'localhost'; -- Replace 'database' and 'tables'
 ```
+
+
+
+
+
+<br>
+
+### Misc
+
+<hr>
+
+Export the result of a query into a CSV file :
+```sql
+SELECT * FROM users
+INTO OUTFILE '/tmp/users.csv'
+FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
+```
+
