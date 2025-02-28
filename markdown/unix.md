@@ -106,6 +106,11 @@ Copy from remote to local :
 rsync -avzh -e ssh <user>@<host>:<remote_folder_or_file> <local_folder>
 ```
 
+Copy a local folder while excluding some files/subfolders :
+```md
+rsync -av --exclude=node_modules --exclude=.git <root_folder> <destination_folder>
+```
+
 <hr>
 
 #### Useful options
@@ -113,6 +118,11 @@ rsync -avzh -e ssh <user>@<host>:<remote_folder_or_file> <local_folder>
 Dry-run :
 ```
 --dry-run
+```
+
+Show progress while running :
+```
+--progress
 ```
 
 Include or exclude some files from the target folder :
