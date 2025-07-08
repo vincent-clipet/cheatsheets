@@ -185,6 +185,11 @@ docker-compose run -d <task_name>
 docker-compose up -d <task_name>
 ```
 
+Display logs for 1 specific task :
+```md
+docker-compose logs -f -t --no-log-prefix --tail=500 <task_name>
+```
+
 
 
 

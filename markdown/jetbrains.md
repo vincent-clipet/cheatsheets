@@ -237,6 +237,11 @@ Duplicate line :
 Ctrl + D
 ```
 
+Move entire block up/down :
+```
+Ctrl + Shift + ↓
+```
+
 Move line up/down :
 ```
 Alt + Shift + ↓
