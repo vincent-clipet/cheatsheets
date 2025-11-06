@@ -32,12 +32,12 @@ Install a specific version :
 ```bash
 # List available versions
 nvm ls-remote
-nvm install [version]
+nvm install $version
 ```
 
 Temporarily change the used version :
 ```bash
-nvm use [version]
+nvm use $version
 nvm run node --version
 ```
 
@@ -47,7 +47,7 @@ Permanently change the used version :
 nvm alias default node
 
 # Set specific
-nvm alias default 18.12
+nvm alias default $version
 ```
 
 Install the most recent NPM version for the current Node version :
@@ -77,13 +77,13 @@ npm install pm2@latest -g
 Add a new app to PM2 & run it :
 ```bash
 pm2 start index.js
-pm2 start index.js --name [name]
+pm2 start index.js --name $name
 pm2 start index.js --watch # real-time reload
 ```
 
 Run an app with a specific NodeJS version (through `nvm`) :
 ```bash
-sudo pm2 start --name [name] index.js --interpreter=/home/[user]/.nvm/[version]/bin/node
+sudo pm2 start --name $name index.js --interpreter="/home/$user/.nvm/versions/node/$version/bin/node"
 ```
 
 Generate an auto-startup file, and save currently running apps to the config :
@@ -95,15 +95,15 @@ pm2 save
 Manage PM2 apps :
 ```bash
 pm2 list
-pm2 restart [name_or_id]
-pm2 reload [name_or_id]
-pm2 stop [name_or_id]
-pm2 delete [name_or_id]
+pm2 restart $name_or_id
+pm2 reload $name_or_id
+pm2 stop $name_or_id
+pm2 delete $name_or_id
 ```
 
 Show the starting command used for an app, and NodeJS info :
 ```bash
-pm2 show [name_or_id]
+pm2 show $name_or_id
 ```
 ```
 │ script path       │ /path/to/app/index.js │
@@ -117,7 +117,12 @@ pm2 show [name_or_id]
 Display logs from all apps :
 ```bash
 pm2 logs
-pm2 logs --lines 50
+
+# Display both INFO and ERROR logs
+pm2 logs --merge
+
+# Last X lines
+pm2 logs --lines $number_of_lines
 ```
 
 Display monitoring UI for all apps :
