@@ -13,6 +13,7 @@ permalink: /
 - ### [MySQL](https://vincent-clipet.github.io/cheatsheets/mysql)
 - ### [Ruby](https://vincent-clipet.github.io/cheatsheets/ruby)
 - ### [Ruby on Rails](https://vincent-clipet.github.io/cheatsheets/ruby-on-rails)
+- ### [TypeScript](https://vincent-clipet.github.io/cheatsheets/typescript)
 - ### [Unix](https://vincent-clipet.github.io/cheatsheets/unix)
 - ### [Visual Studio](https://vincent-clipet.github.io/cheatsheets/visual-studio)
 - ### [Web Tools](https://vincent-clipet.github.io/cheatsheets/web-tools)
