@@ -135,7 +135,7 @@ hr {
 }
 
 #wrapper {
-	max-width: 1000px;
+	max-width: 1000px; /** edit to move page width */
 	margin: 40px auto 40px auto;
 	position: relative;
 }
@@ -144,7 +144,7 @@ hr {
 	max-width: 300px;
 	position: fixed;
 	top: 43px;
-	margin-left: 380px;
+	margin-left: 520px; /** edit to move horizontally */
 	left: 50%;
 	text-align: left;
 	border: 2px #f4bf75 solid;
